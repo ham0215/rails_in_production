@@ -25,5 +25,6 @@ RUN gem update bundler
 RUN bundle install
 COPY . .
 RUN yarn install --check-files
+RUN bundle exec rails assets:precompile
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
