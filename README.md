@@ -1,5 +1,6 @@
 # README
 
-Qiita「Rails newからproductionモードで動くようになるまで」で作ったRailsアプリ
+Qiita記事のためのRailsアプリ
+ブランチと記事の対応はwikiを参照
 
-https://qiita.com/ham0215/items/c0f9a4a0897d805cf886
+https://github.com/ham0215/rails_in_production/wiki
