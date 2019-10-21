@@ -26,5 +26,6 @@ RUN bundle install
 COPY . .
 RUN yarn install --check-files
 RUN bundle exec rails assets:precompile
+RUN rm -rf /app/tmp/pids/server.pid
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
