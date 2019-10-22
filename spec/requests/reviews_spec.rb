@@ -10,11 +10,11 @@ RSpec.describe ReviewsController, type: :request do
     let(:user) { FactoryBot.create(:user) }
 
     before do
-      FactoryBot.create(:review, :draft, user_id: user.id, content: 'first draft review.')
-      FactoryBot.create(:review, :draft, user_id: user.id, content: 'second draft review.')
-      FactoryBot.create(:review, :published, user_id: user.id, content: 'first published review.')
-      FactoryBot.create(:review, :published, user_id: user.id, content: 'second published review.')
-      FactoryBot.create(:review, :published, user_id: user.id, content: 'third published review.')
+      FactoryBot.create(:review, :draft, user: user, content: 'first draft review.')
+      FactoryBot.create(:review, :draft, user: user, content: 'second draft review.')
+      FactoryBot.create(:review, :published, user: user, content: 'first published review.')
+      FactoryBot.create(:review, :published, user: user, content: 'second published review.')
+      FactoryBot.create(:review, :published, user: user, content: 'third published review.')
     end
 
     context '下書きを指定した場合' do
