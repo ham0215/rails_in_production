@@ -32,8 +32,9 @@ jobs:
         bundle exec rake db:migrate
     - name: Run RSpec
       run: bundle exec rspec
-    - name: Slack Notify
-      uses: rtCamp/action-slack-notify@v1.0.0
+    - name: GitHub Action for Slack
+      uses: Ilshidur/action-slack@1.6.2
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_MESSAGE: 'Post Content :rocket:'
+      with:
+        args: 'A new commit has been pushed.'
