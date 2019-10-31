@@ -15,10 +15,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Build and test with Rake
+    - name: Bundle install
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bundle exec rake
+    - name: Migration
+      run: |
+        bundle exec rake db:create
+        bundle exec rake db:migrate
     - name: Rubocop checks
       uses: gimenete/rubocop-action@1.0
+    - name: Run RSpec
+      run: bundle exec rspec
