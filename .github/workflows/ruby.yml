@@ -13,8 +13,8 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - name: Install mysql-devel
-      run: yum install mysql-devel
+    - name: Install libmysqlclient-dev
+      run: apt-get install libmysqlclient-dev
     - name: Build and test with Rake
       run: |
         gem install bundler
