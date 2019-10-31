@@ -33,6 +33,6 @@ jobs:
         bundle exec rake db:create
         bundle exec rake db:migrate
     - name: Rubocop checks
-      uses: gimenete/rubocop-action@1.0
+      uses: gimenete/rubocop-action@master
     - name: Run RSpec
       run: bundle exec rspec
