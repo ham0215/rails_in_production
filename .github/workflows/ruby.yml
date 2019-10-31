@@ -40,7 +40,7 @@ jobs:
       uses: gimenete/rubocop-action@1.0
 
   notify:
-    needs: build
+    needs: [build, rubocop]
     runs-on: ubuntu-latest
     steps:
     - name: slack notify
@@ -49,3 +49,4 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_MESSAGE: 'Post Content :rocket:'
         SLACK_CHANNEL: ci
+        SLACK_TITLE: ${{ job.status }}
