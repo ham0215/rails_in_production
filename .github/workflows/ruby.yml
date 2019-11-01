@@ -37,9 +37,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: rubocop checks
-      uses: gimenete/rubocop-action@1.0
-
-  notify:
+      uses: gimenete/rubocop-action@master
+      
+  success_notify:
     needs: [build, rubocop]
     runs-on: ubuntu-latest
     steps:
@@ -49,4 +49,15 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_MESSAGE: 'Post Content :rocket:'
         SLACK_CHANNEL: ci
-        SLACK_TITLE: ${{ job.status }}
+  failure_notify:
+    if: failure()
+    needs: [build, rubocop]
+    runs-on: ubuntu-latest
+    steps:
+    - name: slack notify
+      uses: rtCamp/action-slack-notify@master
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_MESSAGE: 'Post Content :rocket:'
+        SLACK_CHANNEL: ci
+        SLACK_COLOR: '#FF0000'
