@@ -59,7 +59,7 @@ jobs:
         brakeman -6 -A -w 1
       
   success_notify:
-    needs: [build, rubocop, brakeman]
+    needs: [rspec, rubocop, brakeman]
     runs-on: ubuntu-latest
     steps:
     - name: slack notify
@@ -71,7 +71,7 @@ jobs:
 
   failure_notify:
     if: failure()
-    needs: [build, rubocop, brakeman]
+    needs: [rspec, rubocop, brakeman]
     runs-on: ubuntu-latest
     steps:
     - name: slack notify
