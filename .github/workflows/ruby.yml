@@ -36,11 +36,35 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-    - name: rubocop checks
-      uses: gimenete/rubocop-action@master
+    - uses: actions/checkout@v1
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+    - name: bundle install
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+    - name: run rubocop
+      run: bundle exec rubocop
+
+  brakeman:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+    - name: bundle install
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+    - name: run brakeman
+      run: bundle exec brakeman -6 -A -w 1
       
   success_notify:
-    needs: [build, rubocop]
+    needs: [build, rubocop, brakeman]
     runs-on: ubuntu-latest
     steps:
     - name: slack notify
@@ -51,7 +75,7 @@ jobs:
         SLACK_CHANNEL: ci
   failure_notify:
     if: failure()
-    needs: [build, rubocop]
+    needs: [build, rubocop, brakeman]
     runs-on: ubuntu-latest
     steps:
     - name: slack notify
