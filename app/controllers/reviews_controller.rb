@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def index
-    render json: Review.where(status: Review::statuses[index_params[:status]])
+    render json: Review.where(status: Review.statuses[index_params[:status]])
   end
 
   private
