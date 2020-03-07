@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ham0215/sample_gem.git
-  revision: ff698e92edf3093240918fcd022e55b108ec4730
+  revision: 2fbb7e05248f9755e1a209ee757a37d8d7c131a4
   branch: master
   specs:
     sample_gem (0.1.0)
