@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/ham0215/sample_gem.git
+  revision: ff698e92edf3093240918fcd022e55b108ec4730
+  branch: master
+  specs:
+    sample_gem (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -219,6 +226,7 @@ DEPENDENCIES
   rails
   rspec-rails
   rubocop
+  sample_gem!
   sass-rails
   tzinfo-data
   web-console
