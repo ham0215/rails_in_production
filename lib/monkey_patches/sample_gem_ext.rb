@@ -24,3 +24,5 @@ module SampleKlassClassMethodMonkeyPatch
   end
 end
 SampleGem::SampleKlass.singleton_class.prepend(SampleKlassClassMethodMonkeyPatch)
+
+SampleGem::SampleKlass::SAMPLE_CONST = 'hogehoge'
