@@ -18,4 +18,4 @@ module SampleKlassClassMethodMonkeyPatch
 end
 SampleGem::SampleKlass.singleton_class.prepend(SampleKlassClassMethodMonkeyPatch)
 
-SampleGem::SampleKlass::SAMPLE_CONST = 'hogehoge'
+SampleGem::SampleKlass::SAMPLE_CONST = 'hogehoge'.freeze
