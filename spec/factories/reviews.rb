@@ -3,6 +3,9 @@ FactoryBot.define do
     content { Faker::Lorem.sentences }
     status { :draft }
 
+    association :user
+    association :book
+
     trait :draft do
       status { :draft }
     end
